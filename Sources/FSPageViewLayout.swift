@@ -20,6 +20,11 @@ class FSPagerViewLayout: UICollectionViewLayout {
         return FSPagerViewLayoutAttributes.self
     }
     
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        let layoutDirection = UIView.userInterfaceLayoutDirection(for: UIView.appearance().semanticContentAttribute)
+        return layoutDirection == .rightToLeft
+    }
+    
     fileprivate var pagerView: FSPagerView? {
         return self.collectionView?.superview?.superview as? FSPagerView
     }
